@@ -1,0 +1,33 @@
+<h2>Apacheの起動・再起動・停止をログで確認する - CentOS 7</h2>
+
+Apacheの起動・再起動・停止をログで確認するにはjournalctlコマンドで表示されるログを「-u httpd」で、Apacheのログだけに絞り込みます。
+
+<pre>
+journalctl -u httpd
+</pre>
+
+出力結果のサンプルです。
+
+<pre>
+eb 03 14:54:56 vs01 systemd[1]: Reloaded The Apache HTTP Server.
+Feb 03 14:56:44 vs01 systemd[1]: Stopping The Apache HTTP Server...
+Feb 03 14:57:02 vs01 systemd[1]: Starting The Apache HTTP Server...
+Feb 03 14:57:03 vs01 systemd[1]: Started The Apache HTTP Server.
+Feb 03 15:00:03 vs01 systemd[1]: Reloaded The Apache HTTP Server.
+</pre>
+
+<h3>末尾から表示する</h3>
+
+Apacheの起動・再起動・停止をログを逆順で末尾から表示するには「-r」オプションを使用します。
+
+<pre>
+journalctl -r -u httpd
+</pre>
+
+<h3>末尾を自動で取得</h3>
+
+ログの末尾を自動で取得し<a href="https://linux.perlzemi.com/blog/20200203124238.html">tailコマンド</a>の「-f」オプションのような動作をさせるには「-f」オプションを使用します。
+
+<pre>
+journalctl -f -u httpd
+</pre>

@@ -1,0 +1,52 @@
+<h2>Apacheの状態を確認する - CentOS 7</h2>
+
+Apacheの状態を確認するには「systemctl status httpd」を使用します。
+
+<pre>
+sudo systemctl status httpd
+</pre>
+
+状態の出力結果のサンプルです。実行されているので「active (running)」と表示されています。
+
+<pre>
+[root@vs01 conf.d]# systemctl status httpd
+● httpd.service - The Apache HTTP Server
+   Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled)
+   Active: active (running) since Mon 2020-02-03 14:57:03 JST; 1h 46min ago
+     Docs: man:httpd(8)
+           man:apachectl(8)
+  Process: 24409 ExecStop=/bin/kill -WINCH ${MAINPID} (code=exited, status=0/SUCCESS)
+  Process: 25738 ExecReload=/usr/sbin/httpd $OPTIONS -k graceful (code=exited, status=0/SUCCESS)
+ Main PID: 24414 (httpd)
+   Status: "Total requests: 0; Current requests/sec: 0; Current traffic:   0 B/sec"
+   CGroup: /system.slice/httpd.service
+           tq24414 /usr/sbin/httpd -DFOREGROUND
+           tq25740 /usr/sbin/httpd -DFOREGROUND
+           tq25741 /usr/sbin/httpd -DFOREGROUND
+           tq25742 /usr/sbin/httpd -DFOREGROUND
+           tq25743 /usr/sbin/httpd -DFOREGROUND
+           tq25744 /usr/sbin/httpd -DFOREGROUND
+           tq25745 /usr/sbin/httpd -DFOREGROUND
+           tq25747 /usr/sbin/httpd -DFOREGROUND
+           tq25748 /usr/sbin/httpd -DFOREGROUND
+           tq25749 /usr/sbin/httpd -DFOREGROUND
+           tq25750 /usr/sbin/httpd -DFOREGROUND
+           tq25753 /usr/sbin/httpd -DFOREGROUND
+           tq25760 /usr/sbin/httpd -DFOREGROUND
+           tq25762 /usr/sbin/httpd -DFOREGROUND
+           tq25771 /usr/sbin/httpd -DFOREGROUND
+           mq25773 /usr/sbin/httpd -DFOREGROUND
+
+Feb 03 14:57:03 vs01 systemd[1]: Started The Apache HTTP Server.
+Feb 03 15:00:03 vs01 systemd[1]: Reloaded The Apache HTTP Server.
+Feb 03 15:30:49 vs01 systemd[1]: Reloaded The Apache HTTP Server.
+Feb 03 15:34:11 vs01 systemd[1]: Reloaded The Apache HTTP Server.
+Feb 03 16:06:28 vs01 systemd[1]: Reloaded The Apache HTTP Server.
+Feb 03 16:19:55 vs01 systemd[1]: Reloaded The Apache HTTP Server.
+Feb 03 16:30:37 vs01 systemd[1]: Reloaded The Apache HTTP Server.
+Feb 03 16:32:07 vs01 systemd[1]: Reloaded The Apache HTTP Server.
+Feb 03 16:34:07 vs01 systemd[1]: Reloaded The Apache HTTP Server.
+Feb 03 16:42:21 vs01 systemd[1]: Reloaded The Apache HTTP Server.
+</pre>
+
+一番下には、起動・再起動・停止した時刻が表示されています。
