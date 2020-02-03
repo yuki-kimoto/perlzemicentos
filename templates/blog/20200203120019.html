@@ -1,0 +1,25 @@
+<h2>apacheのアクセスログの場所 - CentOS 7</h2>
+
+apacheのアクセスログは以下の場所にあります。
+
+<pre>
+/var/log/httpd/access_log
+</pre>
+
+アクセスログは初期設定では、自動的にルーティングしており、4つの過去ログも同じディレクトリにあります。
+
+<pre>
+access_log-20200112
+access_log-20200119
+access_log-20200126
+access_log-20200202
+</pre>
+
+<h3>アクセスログを確認する方法</h3>
+
+アクセスログを確認する方法として、ファイルの内容を出力・確認できるLinuxコマンドを紹介しておきます。
+
+<ul>
+  <li><a href="https://linux.perlzemi.com/blog/20200113083613.html">cat - ファイルの内容を出力する</a></li>
+  <li><a href="https://linux.perlzemi.com/blog/20190401171737.html">vi - コマンドライン用のテキストエディタ</a></li>
+</ul>
