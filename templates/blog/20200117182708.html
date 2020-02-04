@@ -9,9 +9,9 @@ sudo yum -y install certbot python-certbot-apache
 
 <h3>Let's encryptは証明書の取得にWebサーバーが必要</h3>
 
-Let's encryptは、HTTPS接続できるWebサーバーにアクセスできることを確認することによって、SSL証明書を発行します。
+Let's encryptは、HTTP接続できるWebサーバーにアクセスできることを確認することによって、SSL証明書を発行します。
 
-ですので、HTTPSで待ち受けるWebサーバーが必要です。
+ですので、HTTPで待ち受けるWebサーバーが必要です。
 
 Webサーバーとして<a href="/blog/20200115175810.html">Aapcheのインストール</a>を行いましょう。
 
@@ -19,10 +19,10 @@ HTTPS接続のためには、mod_sslが必要ですので、<a href="/blog/20200
 
 よくあるサーバーの構成として、リバースプロキシで待ち受ける場合を考えてみましょう。
 
-「/etc/httpd/conf.d/vhost.conf」の中に以下のような設定をします。HTTPSのデフォルトポート443で「www.mydomain.example」を受けて、後ろにあるアプリケーションサーバーの10000番ポートで受けます。
+「/etc/httpd/conf.d/vhost.conf」の中に以下のような設定をします。HTTPのデフォルトポート80で「www.mydomain.example」を受けて、後ろにあるアプリケーションサーバーの10000番ポートで受けます。
 
 <pre>
-  <VirtualHost *:443>
+  <VirtualHost *:80>
     ServerName www.mydomain.example
     
     <Proxy *>
@@ -39,11 +39,28 @@ HTTPS接続のためには、mod_sslが必要ですので、<a href="/blog/20200
 
 SSL証明書の読み込みの設定は、存在しないので、この時点では行いません。
 
-設定後<a href="/blog/20200115175810.html">Apacheを再起動</a>して「https://www.mydomain.example」で、接続できることを確認してください。再起動の前には、<a href="/blog/20200114175810.html">Apacheの設定ファイルが正しいことをチェック</a>しておくと安心でしょう。
+設定後<a href="/blog/20200115175810.html">Apacheを再起動</a>して「http://www.mydomain.example」で、接続できることを確認してください。再起動の前には、<a href="/blog/20200114175810.html">Apacheの設定ファイルが正しいことをチェック</a>しておくと安心でしょう。
+
+リバースプロキシで、Webアプリケーションに接続しているの、Mojoliciousでサーバーを起動する簡単な例です。
+
+<pre>
+# myapp.pl
+use Mojolicious::Lite;
+
+app->start;
+</pre>
+
+起動
+
+<pre>
+hypnotoad myapp.pl
+</pre>
+
+<a href="https://web.perlzemi.com/">Mojolicious</a>のhypnotoadサーバーのデフォルトのポートは10000ですが、ポート番号を指定したい場合は「hypnotoad.conf」を編集します。
 
 <h3>SSL証明書を取得する</h3>
 
-certbotを使って、SSL証明書を取得しましょう。Apache用の設定ファイルも自動で、追加してくれます。
+certbotを使って、SSL証明書を取得しましょう。Apache用のHTTPS接続のための設定も自動で追加してくれます。
 
 <pre>
 sudo certbot run --apache -d www.mydomain.example
@@ -84,7 +101,7 @@ encrypting the web, EFF news, campaigns, and ways to support digital freedom.
 (Y)es/(N)o:
 </pre>
 
-HTTPをHTTPSにリダイレクトするか聞かれるので、「1」か「2」の好きな方を選んでEnter。
+HTTPをHTTPSにリダイレクトするか聞かれるので、「1」のリダイレクトを選びましょう。
 
 <pre>
 Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.
