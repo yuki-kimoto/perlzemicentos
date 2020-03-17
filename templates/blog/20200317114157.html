@@ -1,0 +1,44 @@
+<h2>フォントファイルのディレクトリ - CentOS7, CentOS8</h3>
+
+CentOSにおけるフォントファイルのディレクトリは、以下です。
+
+<pre>
+/usr/share/fonts
+</pre>
+
+フォントを追加するときは、このディレクトリの中にフォントファイルを配置します。サブディレクトリを作成しても大丈夫です。
+
+<h3>すべてのフォントを表示する</h3>
+
+findコマンドを使うと、すべてのフォントを表示することができます。
+
+<pre>
+find /usr/share/fonts
+</pre>
+
+<h3>フォントを絞り込む</h3>
+
+grepコマンドを組み合わせると、フォントを絞り込むことができます。トゥルータイプフォントだけに絞り込んでみましょう。
+
+<pre>
+find /usr/share/fonts | grep ttf
+</pre>
+
+出力結果のサンプルです。
+
+<pre>
+/usr/share/fonts/japanese/TrueType/sazanami-gothic.ttf
+/usr/share/fonts/japanese/TrueType/sazanami-mincho.ttf
+/usr/share/fonts/ja/TrueType/kochi-mincho-subst.ttf
+/usr/share/fonts/ja/TrueType/kochi-gothic-subst.ttf
+/usr/share/fonts/bitstream-vera/VeraSe.ttf
+/usr/share/fonts/bitstream-vera/VeraBd.ttf
+/usr/share/fonts/bitstream-vera/Vera.ttf
+/usr/share/fonts/bitstream-vera/VeraMoBd.ttf
+/usr/share/fonts/bitstream-vera/VeraIt.ttf
+/usr/share/fonts/bitstream-vera/VeraSeBd.ttf
+/usr/share/fonts/bitstream-vera/VeraMoIt.ttf
+/usr/share/fonts/bitstream-vera/VeraMoBI.ttf
+/usr/share/fonts/bitstream-vera/VeraMono.ttf
+/usr/share/fonts/bitstream-vera/VeraBI.ttf
+</pre>
