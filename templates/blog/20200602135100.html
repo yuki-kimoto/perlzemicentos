@@ -36,7 +36,7 @@ Jun 02 14:11:19 myhost systemd[88231]: Startup finished in 20ms.
 
 <pre>
 # Apache
-sudo journalctl -r -u apache2
+sudo journalctl -r -u httpd
 </pre>
 
 <h4>MariaDBのログを見る</h4>
@@ -68,7 +68,7 @@ sudo journalctl -r -u postfix
 
 <pre>
 # cron
-sudo journalctl -r -u cron
+sudo journalctl -r -u crond
 </pre>
 
 <h4>FTPサーバーのログを見る</h4>
@@ -82,7 +82,7 @@ sudo journalctl -r -u vsftpd
 
 <pre>
 # Redisサーバー
-sudo journalctl -r -u redis-server
+sudo journalctl -r -u redis
 </pre>
 
 <h3>journalctlのオプション</h3>
