@@ -1,0 +1,50 @@
+<h2>Google Chromeをインストールする - CentOS 7</h2>
+
+Google Chromeをインストールします。CentOS 7で試しました。
+
+Google Chrome用のリポジトリを追加します。
+
+<pre>
+vi /etc/yum.repos.d/google-chrome.repo
+</pre>
+
+<pre>
+[google-chrome]
+name=google-chrome
+baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64
+enabled=1
+gpgcheck=1
+gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub
+</pre>
+
+Google Chromeをyumコマンドでインストール。
+
+<pre>
+yum -y install google-chrome-stable
+</pre>
+
+バージョン確認してみましょう。
+
+<pre>
+google-chrome --version
+</pre>
+
+バージョンの出力結果です。
+
+<pre>
+Google Chrome 87.0.4280.88
+</pre>
+
+<h3>Google Chromeをヘッドレス実行する</h3>
+
+ヘッドレス実行とはGUI画面なしでWebサイトのアクセスすることです。Google Chromeをヘッドレス実行してスクリーンショットを取得します。
+
+<pre>
+google-chrome --disable-setuid-sandbox --no-sandbox --headless --disable-gpu --dump-dom https://www.chromestatus.com/
+</pre>
+
+画面にHTMLのツリーが表示されればOKです。
+
+<h3>JavaScript対応のWebスクレイピングをPerlで行うには?</h3>
+
+JavaScript対応のWebスクレイピングをPerlで行うにはGoogle Chromeに加えて、<a href="/blog/20210103090837.html">ChromeDriverのインストール</a>と<a href="https://tutorial.perlzemi.com/blog/20091116124667.html">Perlモジュール</a>の<a href="https://tutorial.perlzemi.com/blog/20210105145700.html">Selenium::Remote::Driver</a>が必要です。
