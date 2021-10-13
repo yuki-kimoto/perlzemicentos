@@ -1,0 +1,12 @@
+<h2>ImageMagickをインストールする - CentOS7, CentOS 8</h2>
+
+CentOSにImageMagickをインストールします。
+
+<pre>
+sudo yum -y install ImageMagick
+sudo yum -y install ImageMagick-devel
+</pre>
+
+ImageMagicはイメージマジックです。ImageMagickのconvertコマンドが使える用になります。
+
+ImageMagick-develは、ImageMagicのライブラリです。ImageMagickはC言語で書かれており、Perl、PHP、Rubyなど他のプログラミング言語から、ImageMagickの機能を利用するときに必要になります。

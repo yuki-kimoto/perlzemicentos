@@ -1,0 +1,23 @@
+<h2>Firefoxをインストールする - CentOS 7</h2>
+
+Firefoxをyumコマンドでインストールします。CentOS 7で試しました。
+
+<pre>
+yum -y install firefox
+</pre>
+
+<h3>Firefoxをヘッドレス実行する</h3>
+
+ヘッドレス実行とはGUI画面なしでWebサイトのアクセスすることです。Firefoxをヘッドレス実行してスクリーンショットを取得します。
+
+<pre>
+firefox -headless -screenshot https://developer.mozilla.com
+</pre>
+
+以下はスクリーンショットです。
+
+<img src="/images/firefox/screenshot.png" style="width:100%">
+
+<h3>JavaScript対応のWebスクレイピングをPerlで行うには?</h3>
+
+JavaScript対応のWebスクレイピングをPerlで行うにはFirefoxに加えて、<a href="/blog/20210105090837.html">GeckoDriverのインストール</a>と<a href="https://perlzemi.com/blog/20091116124667.html">Perlモジュール</a>の<a href="https://perlzemi.com/blog/20210105145700.html">Selenium::Remote::Driver</a>が必要です。

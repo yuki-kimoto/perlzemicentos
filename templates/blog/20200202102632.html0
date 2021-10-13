@@ -1,0 +1,31 @@
+<h2>apacheの設定ファイルを編集する - CentOS 7</h2>
+
+apacheの設定ファイルを編集しましょう。apacheのグローバルな設定ファイルの場所は以下です。
+
+<pre>
+/etc/httpd/conf/httpd.conf
+</pre>
+
+viで編集しましょう。
+
+<pre>
+sudo vi /etc/httpd/conf/httpd.conf
+</pre>
+
+<h3>apacheの設定を追加できるディレクトリ</h3>
+
+グローバルな設定ファイルを編集するのは、少し怖いものです。
+
+apacheでは、追加の設定のための設定ディレクトリが準備されています。
+
+<pre>
+/etc/httpd/conf/conf.d
+</pre>
+
+このディレクトリの中に、拡張子が「.conf」のファイルを配置すれば、自動的に読み込まれます。
+
+たとえばバーチャルホスト用の設定ファイルを配置したとすると以下のようなファイル名にします。
+
+<pre>
+vhost.conf
+</pre>
