@@ -1,40 +1,48 @@
 <h2>ChromeDriverをインストールする - Cent OS 7</h2>
 
-Google Chromeをプログラムから制御するためのChromeDriverをインストールしましょう。ChromeDriverのバイナリを直接配置します。64bit版のLinuxであることを想定します。Cent OS 7で確認しています。
+Google ChromeブラウザをSeleniumを使ってプログラムから自動制御するためのChromeDriverをインストールしましょう。ChromeDriverのバイナリを直接配置します。64bit版のLinuxであることを想定します。Cent OS 7で確認しています。
 
 <pre>
-firefox -v
+google-chrome --version
 </pre>
 
 バージョン。
 
 <pre>
-Mozilla Google Chrome 78.6.0esr
+Google Chrome 87.0.4280.88
 </pre>
 
 ChromeDriverをインストールしましょう。
 
 <pre>
 cd /usr/local/src
-wget https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz
-tar -xf geckodriver-v0.26.0-linux64.tar.gz
-mv geckodriver /usr/local/bin/
+wget https://chromedriver.storage.googleapis.com/87.0.4280.88/chromedriver_linux64.zip
+unzip chromedriver_linux64.zip
+mv chromedriver /usr/local/bin/
 </pre>
 
 ChromeDriverのバージョン確認。
 
 <pre>
-geckodriver --version
+chromedriver --version
 </pre>
 
 バージョンの出力結果。
 
 <pre>
-geckodriver 0.26.0 (e9783a644016 2019-10-10 13:38 +0000)
+ChromeDriver 86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378})
 </pre>
 
 不具合がある場合は、Google ChromeとChromeDriverのバージョンをWeb上で検索して、確認してください。
 
-<h3>JavaScript対応のWebスクレイピングをPerlで行うには?</h3>
+<h3>Google Chromeのインストール</h3>
 
-JavaScript対応のWebスクレイピングをPerlで行うには<a href="/blog/20210104090837.html">Google Chromeのインストール</a>と<a href="https://perlzemi.com/blog/20091116124667.html">Perlモジュール</a>の<a href="https://perlzemi.com/blog/20210105145700.html">Selenium::Remote::Driver</a>も必要です。
+ChromeDriverはGoogle Chromeブラウザをプログラムから自動実行するために必要になるものです。Google ChromeのCentOSへのインストールは、以下で解説しています。
+
+<ul>
+  <li><a href="/blog/20210104090837.html">Google Chromeのインストール</a></li>
+</ul>
+
+<h3>JavaScript対応のWebスクレイピングをプログラムから行うには?</h3>
+
+JavaScript対応のWebスクレイピングをプログラムから行うには、プログラミング言語で提供されているSeleniumライブラリが必要です。Perl - <a href="https://perlzemi.com/blog/20210105145700.html">Selenium::Remote::Driver</a>、PHP、Pyhton、RubyなどのSeleniumライブラリがあります。
