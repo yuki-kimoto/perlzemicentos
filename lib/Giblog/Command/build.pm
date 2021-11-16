@@ -122,7 +122,7 @@ sub create_list {
   {
     my $content;
     $content = <<'EOS';
-<h2>Entries</h2>
+<h2>新着記事</h2>
 EOS
     $content .= "<ul>\n";
     my $before_year = 0;
